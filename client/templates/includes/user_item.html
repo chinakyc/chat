@@ -1,0 +1,19 @@
+<template name="userItem">
+  <li class="withripple">
+    {{prepare}}
+    {{#if ! readState}}
+      <i class="material-icons">face</i>
+    {{/if}}
+    <a href={{ pathFor 'dialogue' }}>
+      <div>
+        {{name}}
+      </div>
+      <div>
+        {{messageContent}}
+      </div>
+      </a>
+    <div>
+      {{createTime}}
+    </div>
+  </li>
+</template>
