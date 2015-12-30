@@ -1,19 +1,26 @@
 <template name="userItem">
-  <li class="withripple">
-    {{prepare}}
-    {{#if ! readState}}
-      <i class="material-icons">face</i>
+  {{# if noCurrentUser _id }}
+  <a href={{ pathFor 'dialogue' }}>
+  <li class="btn btn-raised btn-info message">
+    <div class="ripple-container">
+    <div class="col-md-1">
+    {{# if unAreadlyRead message}}
+      <span>·</span>
     {{/if}}
-    <a href={{ pathFor 'dialogue' }}>
-      <div>
-        {{name}}
-      </div>
-      <div>
-        {{messageContent}}
-      </div>
-      </a>
-    <div>
-      {{createTime}}
     </div>
+      <div class="col-md-3">
+          <span>{{username}}</span>
+      </div>
+      {{# if message }}
+      <div class="col-md-4">
+          <span>{{displayContent message.content}}</span>
+      </div>
+      <div class="col-md-4">
+        <span>{{displayCreateTime message.createTime}}</span>
+      </div>
+      {{/if}}
+  </div>
   </li>
+  </a>
+  {{/if}}
 </template>

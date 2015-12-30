@@ -1,0 +1,11 @@
+<template name="usersMessages">
+  <div class="posts page">
+    <div class="wrapper">
+      <ul class="messages">
+        {{#each users}}
+          {{> userItem}}
+          {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>

@@ -1,14 +1,24 @@
 <template name="messageItem">
-  <li class="withripple">
-    <div>
-      {{ ownerName }}
-    </div>
-    <div>
-      {{ messageContent }}
-    </div>
-    </a>
-    <div>
-      {{ createTime }}
-    </div>
-  </li>
+  {{readMessage _id}}
+  <table class="table btn btn-raised btn-info message">
+    <tr>
+      {{# if noCurrentUser ownerId}}
+        <td class="message-username">
+          <span>{{username ownerId}} </span>
+        </td>
+        <td class="message-content left">
+          <p class="right size13">Said on {{displayCreateTime createTime}}</p>
+          <p>{{content}}</p>
+        </td>
+      {{else}}
+        <td class="message-content right">
+          <p class="left size13">Said on {{displayCreateTime createTime}}</p>
+          <p>{{content}}</p>
+        </td>
+        <td class="message-username">
+          <span>{{username ownerId}} </span>
+        </td>
+      {{/if}}
+    </tr>
+  </table>
 </template>

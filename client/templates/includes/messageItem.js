@@ -1,9 +1,18 @@
 Template.messageItem.helpers({
-    prepare: function() {
-        this.owner = Meteor.users.findOne({_id: this.ownerId})
+    readMessage: function(_id) {
+        Meteor.call('readMessage', _id);
     },
 
-    ownerName: function () {
-        return this.owner.name
+    noCurrentUser: function(_id) {
+        return _id !== Meteor.userId()
     },
+
+    username: function (id) {
+        return Meteor.users.findOne({_id: id}).username
+    },
+
+    displayCreateTime: function(createTime) {
+        return moment(createTime).fromNow()
+    },
+
 });
